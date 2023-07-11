@@ -1,1 +1,25 @@
+package OrangeHRMTestCases;
 
+import java.io.IOException;
+
+import org.testng.annotations.Test;
+
+import OrangeHRMPages.Logoutpage;
+
+public class ManageUserRole extends AddUser {
+
+	public ManageUserRole() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Test(enabled = true, priority = 0)
+	public void Adding_New_User_In_Addmin_Section_Manage_User_Role() throws InterruptedException, IOException {
+		login();
+		OrangeHRMPages.ManageUserRole a = new OrangeHRMPages.ManageUserRole(driver);
+		a.ManagingUserRole("End to End Tester");
+		Logoutpage Object=new Logoutpage(driver);
+		Object.logoutApplication();
+	}
+
+}
