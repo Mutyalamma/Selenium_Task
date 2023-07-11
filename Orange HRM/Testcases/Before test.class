@@ -1,1 +1,29 @@
+package OrangeHRMTestCases;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.BeforeSuite;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class BeforeTest {
+WebDriver driver;
+	@BeforeSuite
+	public WebDriver Launch() {
+		WebDriverManager.chromedriver().setup();
+		System.setProperty("webdriver.http.factory", "jdk-http-client");
+		driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");		  
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+		return driver;
+	}
+	
+
+}
 
