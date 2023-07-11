@@ -1,1 +1,39 @@
+package OrangeHRMTestCases;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import OrangeHRMPages.Loginpage;
+
+public class Logintest extends BeforeTest
+{	
+	public Logintest() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	Loginpage loginpage;
+	
+	public Loginpage login() throws IOException 
+	{
+		Properties property = new Properties();				
+		FileInputStream FIS = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\Resources\\Config.properties");
+		property.load(FIS);
+		String Url = property.getProperty("url");				
+		String userName = property.getProperty("username");	
+		String Password = property.getProperty("password");	
+		driver.get(Url);								
+		Loginpage Object_For_Login_Page = new Loginpage(driver);	
+		Object_For_Login_Page.login(userName,Password);	
+		return loginpage;
+	}
+
+}
+	
+	
+		
+
+
 
