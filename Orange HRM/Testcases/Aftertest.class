@@ -1,1 +1,25 @@
+package OrangeHRMTestCases;
+
+import java.io.IOException;
+
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.Test;
+
+import OrangeHRMPages.Loginpage;
+import OrangeHRMPages.Logoutpage;
+
+public class Aftertest extends ManageUserRole {
+	
+	public Aftertest() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@AfterSuite
+	public void Quit() 
+	{
+		driver.quit();
+	}
+
+}
 
