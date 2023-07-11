@@ -1,1 +1,44 @@
+package OrangeHRMTestCases;
+
+import java.io.IOException;
+
+import org.testng.annotations.Test;
+
+import OrangeHRMPages.AddUserRolePage;
+import OrangeHRMPages.Loginpage;
+import OrangeHRMPages.Logoutpage;
+
+public class AddUser extends Logintest {
+
+	public AddUser() throws IOException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Test(enabled=true, priority=0) 
+	public void AddingNewUser() throws InterruptedException, IOException {
+			
+		login();	
+		AddUserRolePage HrAdministration = new 	AddUserRolePage(driver);
+		HrAdministration.HRadminstration();		
+		HrAdministration.Adduserdetails("a", "mutyalamma", "Abcd@999", "Abcd@999");		
+		
+		//Logout page
+		Logoutpage Object_For_Logout_Page = new Logoutpage(driver);	
+		Logoutpage.logoutApplication();		
+		
+		//Login With Added User
+		Loginpage Object_For_Login_Page = new Loginpage(driver);	
+		Object_For_Login_Page.login("mutyalamma","Abcd@999");
+		HrAdministration.Verifying();	
+	    
+		// Deleting Added User
+		Object_For_Logout_Page.logoutApplication();	
+		login();	
+		HrAdministration.DeleteUser(); 	
+		Object_For_Logout_Page.logoutApplication();	
+		
+	}
+
+}
 
